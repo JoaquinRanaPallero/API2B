@@ -1,15 +1,8 @@
 <?php
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/PHPClass.php to edit this template
- */
-
-/**
- * Description of autoload
- *
- * @author joaqu
- */
-class autoload {
-    //put your code here
-}
+/* @autor Joaquín Rana Pallero */
+spl_autoload_register(function ($clase) {
+    if (file_exists(__DIR__ . '/' . $clase . '.php')) {
+        include_once __DIR__ . '/' . $clase . '.php';
+    }
+});
+?>

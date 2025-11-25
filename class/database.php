@@ -1,15 +1,35 @@
 <?php
+/* @autor Joaquín Rana Pallero */
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/PHPClass.php to edit this template
- */
+class Database {
+    private $pdo;
+    
+    public function __construct() {
+        // Configuración por defecto XAMPP (usuario root, sin clave)
+        // Cambia "" por "root" si usas MAMP o tienes clave configurada.
+        try {
+            $this->pdo = new PDO("mysql:host=localhost;dbname=MIPROYECTO", "root", "");
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Error de conexión: " . $e->getMessage();
+            exit;
+        }
+    }
 
-/**
- * Description of database
- *
- * @author joaqu
- */
-class database {
-    //put your code here
+    public function insert($sql, $params = []) {
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute($params);
+    }
+
+    public function select($sql, $params = [], $class = 'stdClass') {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, $class);
+    }
+    
+    public function delete($sql, $params = []) {
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute($params);
+    }
 }
+?>
