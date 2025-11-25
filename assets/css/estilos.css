@@ -1,0 +1,128 @@
+/* estilos generales para formularios y listas */
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --accent:#0b3d91;
+  --accent-2:#00bcd4;
+  --text:#222;
+  --muted:#666;
+  --success:#28a745;
+  --danger:#dc3545;
+}
+
+*{box-sizing:border-box}
+body{
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+  padding:20px;
+}
+
+/* contenedor central */
+.form-card{
+  max-width:720px;
+  margin:20px auto;
+  background:var(--card);
+  border-radius:8px;
+  box-shadow:0 6px 18px rgba(11,61,145,0.08);
+  padding:20px 26px;
+}
+
+/* header con logo y nombre de empresa */
+.header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+  margin-bottom:12px;
+}
+.header img{width:72px; height:auto}
+.header h1{
+  font-size:20px;
+  margin:0;
+  color:var(--accent);
+}
+.header p{margin:0; color:var(--muted); font-size:13px}
+
+/* form styling */
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-bottom:12px;
+}
+label{
+  font-size:13px;
+  color:var(--muted);
+}
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select,
+textarea{
+  padding:10px 12px;
+  border:1px solid #e2e6ef;
+  border-radius:6px;
+  font-size:14px;
+  background:white;
+  transition:box-shadow .15s, border-color .15s;
+}
+input:focus, select:focus, textarea:focus{
+  outline:none;
+  border-color:var(--accent-2);
+  box-shadow:0 0 0 3px rgba(0,188,212,0.08);
+}
+
+
+textarea{ min-height:100px; resize:vertical; }
+
+/* botones */
+.form-actions{
+  display:flex;
+  gap:12px;
+  margin-top:8px;
+}
+.btn{
+  padding:10px 16px;
+  border-radius:8px;
+  border:none;
+  font-size:14px;
+  cursor:pointer;
+}
+.btn-save{
+  background:var(--success);
+  color:white;
+}
+.btn-cancel{
+  background:var(--danger);
+  color:white;
+}
+
+/* botón secundario tipo reset */
+.btn[disabled]{opacity:0.6; cursor:not-allowed}
+
+/* centro para el nombre del alumno */
+.alumno{
+  text-align:center;
+  margin-top:14px;
+  color:var(--muted);
+  font-weight:600;
+}
+
+/* estilos responsivos */
+@media (max-width:480px){
+  .form-card{padding:14px}
+  .header img{width:56px}
+}
+
+/* estilos para mensajes de validación (agregados) */
+.validation-author-text {
+  color: #b30000;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+.validation-invalid-field {
+  outline: 1px solid #b30000;
+}
